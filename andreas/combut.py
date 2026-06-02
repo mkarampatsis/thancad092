@@ -31,6 +31,9 @@ from p_gtkwid import ThanToolButton, thanicon
 from thantrans import T
 #   circle
 
+# Add from Markos
+import ttkbootstrap as ttk
+from ttkbootstrap_icons_bs import BootstrapIcon
 
 class Combut(Frame):
 
@@ -54,6 +57,15 @@ class Combut(Frame):
         self.proj[2].thanGudCommandBegin("save")
 
     def combut(self):
+        # add from Markos
+        # icon = BootstrapIcon('circle', size=16)
+        # b = ttk.Button(
+        #     self,
+        #     text="Circle",
+        #     image=icon,
+        #     compound="left",
+        #     bootstyle="primary"
+        # )
         b = ThanToolButton(self, help=T["Circle"], text="circle",
             image=thanicon.get("circle2", foreground="blue"),
             bg="green", activebackground="lightgreen", command=self.hh)

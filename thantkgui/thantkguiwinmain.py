@@ -173,5 +173,7 @@ class ThanTkGuiWinMain(ttk.Window):
 
     def destroy(self):
         "Deletes circular references."
-        del self.thanFo, self.thanMenu, self.thanTkPos
+        # Change from Markos
+        # del self.thanFo, self.thanMenu, self.thanTkPos
+        del self.thanMenu, self.thanTkPos
         tkinter.Tk.destroy(self)

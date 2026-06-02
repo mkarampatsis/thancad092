@@ -37,6 +37,9 @@ from thantrans import T
 from . import thantkguicoor, thantkguihighget, thantkguihighdraw, thantkguilowget
 from . import thantkcmd, thantkstatus, thanmenus
 
+# Add from Markos
+import ttkbootstrap as ttk
+
 thanfiles = thanvar.thanfiles
 Canc = thanvar.Canc
 
@@ -126,6 +129,10 @@ class ThanTkGuiWinDraw(tkinter.Toplevel,
 
 
     def __createControls (self):
+        # add from Markos
+        style = ttk.Style()
+        colors = style.colors
+        
         "Creates various controls and sets attributes."
         self.config(background="#%2xd%2xd%2xd" % (238, 92, 66))
         self.columnconfigure(0, weight=1)
@@ -163,7 +170,9 @@ class ThanTkGuiWinDraw(tkinter.Toplevel,
             xscrollincrement=1, yscrollincrement=1)
         self.thanCanvas.grid(row=1, column=0, sticky="swne")
 
-        self.thanCom = thantkcmd.ThanTkCmd(self.thanProj, bd=1, relief=tkinter.SUNKEN, background="lightyellow",
+        
+        # self.thanCom = thantkcmd.ThanTkCmd(self.thanProj, bd=1, relief=tkinter.SUNKEN, background="lightyellow",
+        self.thanCom = thantkcmd.ThanTkCmd(self.thanProj, bd=1, relief=tkinter.SUNKEN, background=colors.light,                                        
             height=5, maxlines=1000, font="fixedspace")  #Thanasis2024_08_30:do not specify foreground, so that correctForeground() is called
         self.thanCom.grid(row=2, column=0, columnspan=2, sticky="swne")
 
