@@ -28,6 +28,8 @@ This module defines a Tkinter window to display ThanCad's main window.
 
 import sys, weakref
 import tkinter
+import ttkbootstrap as ttk
+from ttkbootstrap.constants import *
 import p_gtkwid, p_ggen
 import thanvar, thancom
 from thanvers import tcver
@@ -36,15 +38,22 @@ from thanopt import thancadconf
 from . import thanmenus
 thanfiles = thanvar.thanfiles
 
-
-class ThanTkGuiWinMain(tkinter.Tk):
+# Removed from Markos
+# class ThanTkGuiWinMain(tkinter.Tk):
+class ThanTkGuiWinMain(ttk.Window):
     "Main window of tkinter GUI."
 
     def __init__ (self):
         "Initialise base classes and mixins and then this class."
-        tkinter.Tk.__init__(self, className="ThanCad")
+        # tkinter.Tk.__init__(self, className="ThanCad")
+        ttk.Window.__init__(
+            self, 
+            title=tcver.title, 
+            themename="superhero"
+        )
 
-        self.__fonts()
+        # Removed from Markos
+        # self.__fonts()
         self.__position()
         self.__createControls()
 
