@@ -28,6 +28,7 @@ This module defines a tkinter window to display a ThanCad drawing.
 
 import weakref
 import tkinter
+import ttkbootstrap as ttk
 import p_ggen, p_gtkwid
 import thantk, thanvar, thanfonts
 from thanvers import tcver
@@ -38,7 +39,8 @@ from . import thantkguicoor, thantkguihighget, thantkguihighdraw, thantkguilowge
 from . import thantkcmd, thantkstatus, thanmenus
 
 # Add from Markos
-import ttkbootstrap as ttk
+# import ttkbootstrap as ttk
+import style.style as thanStyle
 
 thanfiles = thanvar.thanfiles
 Canc = thanvar.Canc
@@ -130,8 +132,8 @@ class ThanTkGuiWinDraw(tkinter.Toplevel,
 
     def __createControls (self):
         # add from Markos
-        style = ttk.Style()
-        colors = style.colors
+        # style = ttk.Style()
+        # colors = style.colors
         
         "Creates various controls and sets attributes."
         self.config(background="#%2xd%2xd%2xd" % (238, 92, 66))
@@ -172,8 +174,7 @@ class ThanTkGuiWinDraw(tkinter.Toplevel,
 
         
         # self.thanCom = thantkcmd.ThanTkCmd(self.thanProj, bd=1, relief=tkinter.SUNKEN, background="lightyellow",
-        self.thanCom = thantkcmd.ThanTkCmd(self.thanProj, bd=1, relief=tkinter.SUNKEN, background=colors.light,                                        
-            height=5, maxlines=1000, font="fixedspace")  #Thanasis2024_08_30:do not specify foreground, so that correctForeground() is called
+        self.thanCom = thantkcmd.ThanTkCmd(self.thanProj, bd=1, relief=tkinter.SUNKEN, background=thanStyle.colors.light, height=5, maxlines=1000, font="fixedspace")  #Thanasis2024_08_30:do not specify foreground, so that correctForeground() is called
         self.thanCom.grid(row=2, column=0, columnspan=2, sticky="swne")
 
         import andreas
@@ -252,7 +253,13 @@ class ThanTkGuiWinDraw(tkinter.Toplevel,
 
 
 if __name__ == "__main__":
-    print(__doc__)
-    gui = tkinter.Tk()
-    mainWindow = ThanTkGuiWinDraw(gui)
-    gui.mainloop()
+  print(__doc__)
+  # Remove from Markos
+  # gui = tkinter.Tk()
+  # Add from Markos
+  gui = ttk.Window(
+    title=tcver.title, 
+    themename=thanStyle.themename
+  )
+  mainWindow = ThanTkGuiWinDraw(gui)
+  gui.mainloop()
